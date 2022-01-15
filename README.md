@@ -27,7 +27,7 @@ so that the user can return to the main task if they decide not to edit the list
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://imgur.com/a/r4THyNM' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src="./demo.gif" alt="My Project GIF" width="402" height="864">
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
