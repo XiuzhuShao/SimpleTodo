@@ -32,7 +32,7 @@ Upon confirmation, the current list of tasks is wiped.
 
 Here's a walkthrough of implemented user stories:
 
-<img src="./demo.gif" alt="My Project GIF" width="402" height="864">
+<img src="./demo_updated.gif" alt="My Project GIF" width="402" height="864">
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
