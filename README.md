@@ -23,6 +23,11 @@ The following **additional** features are implemented:
 * [X] A supportActionBar with a title has been added to both the Main Task and Edit Task screen. Additionally, the Edit Task action bar provides a back arrow
 so that the user can return to the main task if they decide not to edit the list item.
 
+* [X] The launch icon has been changed to better reflect the functionality of the app. Color scheme has been updated.
+
+* [X] A delete-all button has been implemented to clear the list. When the button is pressed, an alert pops up to confirm that the user does in fact want to clear the list.
+Upon confirmation, the current list of tasks is wiped.
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
