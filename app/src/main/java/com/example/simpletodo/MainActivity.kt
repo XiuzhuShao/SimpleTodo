@@ -1,16 +1,23 @@
 package com.example.simpletodo
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.FileUtils
-import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.snackbar.SnackbarContentLayout
 import java.io.File
 import java.io.IOException
 import java.nio.charset.Charset
@@ -22,11 +29,41 @@ class MainActivity : AppCompatActivity() {
     // REQUEST_CODE can be any value we like, used to determine the result type later
     private val REQUEST_CODE = 20
 
+    //Adds custom support action bar buttons to display
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean{
+        //Action Bar tasks
+        var actionBar = supportActionBar
+        actionBar!!.title = "Main Task"
+        menuInflater.inflate(R.menu.activity_main_menu,menu)
+
+        return true
+    }
+
+    //Defines what happens when user selects the Delete All button.
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var builder = AlertDialog.Builder(this)
+        when(item.itemId){
+            R.id.delete_all -> {
+                Toast.makeText(this,"Delete all items in list", Toast.LENGTH_SHORT).show()
+                builder.setTitle("Alert!")
+                    .setMessage("Permanently delete all?")
+                    .setCancelable(true)
+                    .setNegativeButton("No"){dialogInterface,it -> dialogInterface.cancel()}
+                    .setPositiveButton("Yes!"){dialogInterface,it ->
+                            listOfTasks.clear()
+                            adapter.notifyDataSetChanged()
+                            saveItems()
+                    }
+                    .show()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var actionBar = supportActionBar
-        actionBar!!.title = "Main Task"
 
         val onLongClickListener = object : TaskItemAdapter.OnLongClickListener{
             override fun onItemLongClicked(position: Int) {
@@ -113,6 +150,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
 
     // Upon finishing edit, updates the task list
     override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?) {

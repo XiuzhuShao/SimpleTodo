@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Finish Edit"
         android:layout_margin="10dp"
+        android:backgroundTint="@android:color/holo_green_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
